@@ -1,0 +1,15 @@
+from django import forms
+from .models import Course
+
+class CourseForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = [
+            'category',
+            'title',
+            'slug',
+            'description',
+            'duration',
+            'price',
+            'image',
+        ]

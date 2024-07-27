@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ course.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        p {
+            color: #555;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ course.title }}</h1>
+        <p>{{ course.description }}</p>
+        <p>Duration: {{ course.duration }} hours</p>
+        <p>Price: ${{ course.price }}</p>
+        {% if course.image %}
+            <img src="{{ course.image.url }}" alt="{{ course.title }}">
+        {% endif %}
+        <p>Created at: {{ course.created_at }}</p>
+        <p>Updated at: {{ course.updated_at }}</p>
+
+        <div class="links">
+            <a href="{% url 'course_edit' course.slug %}">Edit</a>
+            <a href="{% url 'course_delete' course.slug %}">Delete</a>
+            <a href="{% url 'course_list' %}">Back to list</a>
+        </div>
+    </div>
+</body>
+</html>
